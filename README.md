@@ -38,4 +38,30 @@ A smart resume enhancement tool that analyzes resumes, extracts skills, compares
 
 ---
 
+## 🚀 How it works
 
+▶️ Start the Backend (FastAPI)
+
+uvicorn app.main:app --reload
+
+🖼️ Start the Frontend (Streamlit UI)
+Open a new terminal: 
+
+streamlit run streamlit_ui/app.py
+
+---
+
+## ✨ Final Output
+
+Once everything runs: Upload or paste a resume and job description
+Get:
+
+✅ Match Percentage (with a progress bar)
+
+🎯 Matched Skills
+
+❌ Missing Skills
+
+💡 Suggestions to Improve
+
+----
