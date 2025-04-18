@@ -38,7 +38,7 @@ A smart resume enhancement tool that analyzes resumes, extracts skills, compares
 
 ---
 
-## 🚀 How it works
+## 🚀 How to run the project
 
 ▶️ Start the Backend (FastAPI)
 
