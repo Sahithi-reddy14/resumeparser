@@ -71,4 +71,4 @@ if st.button("🔍 Analyze Resume"):
 
 # ---------- Footer ----------
 st.markdown("---")
-st.markdown("<center><small>Built 19</small></center>", unsafe_allow_html=True)
+st.markdown("<center><small>Built by Team 19</small></center>", unsafe_allow_html=True)
