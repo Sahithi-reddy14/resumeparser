@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from app.predict import predict_resume, compare_skills
+
 from app.matcher import compare_skills
 from app.schemas import MatchRequest
 from app.bert_matcher import semantic_match
