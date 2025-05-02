@@ -38,16 +38,38 @@ A smart resume enhancement tool that analyzes resumes, extracts skills, compares
 
 ---
 
+## 🛠️ Setup Instructions
+
+### 1. Clone the repository
+
+git clone https://github.com/yourusername/resumeparser.git
+
+cd resumeparser
+
+### 2. Create virtual environment and install dependencies
+
+python -m venv .venv
+
+venv\Scripts\Activate  # on Windows
+
+pip install -r requirements.txt
+
+--
+
 ## 🚀 How to run the project
 
 ▶️ Start the Backend (FastAPI)
 
 uvicorn app.main:app --reload
 
+Runs on http://127.0.0.1:8000
+
 🖼️ Start the Frontend (Streamlit UI)
 Open a new terminal: 
 
 streamlit run streamlit_ui/app.py
+
+UI runs on http://localhost:8501
 
 ---
 
