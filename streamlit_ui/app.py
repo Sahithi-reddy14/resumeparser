@@ -3,20 +3,20 @@ import requests
 import tempfile
 from file_utils import extract_text_from_pdf
 
-# 🌟 Title
-st.title("🚀 AI Resume Matcher (BERT-Powered)")
+# Title
+st.title("AI Resume Matcher (BERT-Powered)")
 
 # 📝 Resume Input
-st.markdown("### ✍️ Paste Resume Text ")
-resume_text_input = st.text_area("🧾 Resume Text", height=200, key="resume_input")
+st.markdown("Paste Resume Text ")
+resume_text_input = st.text_area("Resume Text", height=200, key="resume_input")
 
 st.markdown("### 📎 Upload Resume File (PDF)")
 resume_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"], key="resume_upload")
 
 st.markdown("---")
 
-# 📝 Job Description Input
-st.markdown("### ✍️ Paste Job Description")
+#  Job Description Input
+st.markdown("### Paste Job Description")
 job_text_input = st.text_area("📄 Job Description Text", height=200, key="job_input")
 
 st.markdown("### 📎 Upload Job Description File (PDF)")
@@ -24,8 +24,8 @@ job_file = st.file_uploader("Upload job description (PDF)", type=["pdf"], key="j
 
 st.markdown("---")
 
-# 🧠 Semantic Match Button
-if st.button("🧠 Semantic Match (BERT)"):
+#  Semantic Match Button
+if st.button(" Semantic Match (BERT)"):
     # Load from text areas
     resume_text = resume_text_input.strip()
     job_text = job_text_input.strip()
@@ -55,10 +55,15 @@ if st.button("🧠 Semantic Match (BERT)"):
 
         if response.status_code == 200:
             result = response.json()
-            score = result["semantic_match_score"]
-            
-            st.markdown("### 🧠 Semantic Match Score:")
-            st.success(f"**{score}%** match based on deep contextual similarity")
+            semantic_score = result.get("semantic_match_score", 0)
+            skill_score = result.get("skill_match_score", 0)
+            combined_score = result.get("combined_score", 0)
+
+            st.markdown("### Match Scores")
+            st.metric("🔍 Semantic Match:", f"{semantic_score}%")
+            st.metric("🛠️ Skill Match:", f"{skill_score}%")
+            st.success(f"✅ **Combined Score:** {combined_score}%")
+
 
             # Optional: Show detailed feedback if backend includes it
             if "matched_skills" in result:

@@ -30,22 +30,24 @@ COMMON_SKILLS = {
     'iot', 'robotics', 'biotechnology', 'genomics', 'digital marketing', 'seo', 'sem', 'content creation'
 }
 
+import re
+
 def extract_skills(text):
     doc = nlp(text.lower())
     found_skills = set()
 
-    # Match using single tokens
     for token in doc:
-        if token.text in COMMON_SKILLS:
-            found_skills.add(token.text)
+        token_text = token.lemma_.strip()
+        if token_text in COMMON_SKILLS:
+            found_skills.add(token_text)
 
-    # Match using noun chunks (multi-word phrases)
     for chunk in doc.noun_chunks:
-        chunk_text = chunk.text.strip().lower()
+        chunk_text = re.sub(r'[^\w\s]', '', chunk.text.lower().strip())
         if chunk_text in COMMON_SKILLS:
             found_skills.add(chunk_text)
 
     return list(found_skills)
+
 
 def compare_skills(resume_text, job_description):
     resume_skills = set(extract_skills(resume_text))
